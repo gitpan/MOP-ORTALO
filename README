@@ -1,0 +1,165 @@
+1. INTRODUCTION
+
+The MOP-1.00 package is composed of several Perl5 modules:
+ - MOP::MOP
+ - MOP::MetaModule
+ - MOP::Remote
+
+The two modules MOP::MOP and MOP::MetaModule provide the basis of
+a meta-object protocol (MOP) for Perl5 objects.
+Basically, a MOP allows trapping of the various method calls made by a
+user on the objects he has created from a MOP-aware module. These
+method calls are then redirected to another object, called the meta-object,
+for further processing. Once the meta-object has taken control of the
+method call, it can complement the processing made by the base level
+target object in various ways. Possible applications include:
+transparent remote invocation, authentication, replicas management or
+stable storage for fault tolerance, etc.
+
+MOP::MOP allows the programmer to specify which methods of an object can be
+controlled by a meta-object through the MOP. It is used to enable the MOP and
+the reflective methods in the base level module.
+MOP::MetaModule provides the minimal functionality needed for a meta-object,
+in particular the ability to activate the actual method call processing
+in the base level object from the meta-level. Hence, MOP::MetaModule
+is a generic module from which all meta-class modules should inherit.
+
+The MOP-1.00 package contains a few examples of more or less useful
+meta-modules. The most interesting meta-module example (MOP::Remote)
+provides a framework for transparent distribution on a (NFS capable)
+Unix platform.
+
+2. PREREQUISITES
+
+MOP::MOP is implemented as a source filter. Hence, the MOP::MOP module
+depends on the Filter::Util::Call module, which is available from CPAN.
+
+3. QUICKSTART
+
+WANRING: If you want to run the tests of MOP::Remote, you need to specify
+the name of another host you can use to start a remote server! If you only
+have one machine, you can say 'localhost' instead of other-host.
+
+ * BUILD:
+perl Makefile.PL PREFIX=~
+make
+
+ * TRY:
+You set an env. variable to indicate a remote host (or fake it on
+'localhost'). Depending on your shell, say one of:
+ setenv REMOTE_HOST other-host                  (csh-ish)
+ REMOTE_HOST=other-host; export REMOTE_HOST     (sh-ish)
+ export REMOTE_HOST=other-host                  (bash-ish)
+make test
+
+ * ADOPT:
+make pure_install
+
+4. LICENSE
+
+Copyright (c) 1999 Rodolphe Ortalo & LAAS-CNRS. All rights reserved.
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+Note in particular that, according to this license:
+"   [... 1-8 skipped...]
+9. The name(s) of the Copyright Holder may not be used to endorse or promote
+products derived from this software without specific prior written permission.
+
+10. THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE."
+
+
+5. AVAILABILITY
+
+This module should be available soon from CPAN, probably in:
+ http://www.cpan.org/authors/id/O/OR/ORTALO/MOP-1.00.tar.gz
+and from my own homepage (in French):
+ http://www.laas.fr/~ortalo/
+
+
+Rodolphe Ortalo, February 9, 1999
+
+==========================================================================
+
+1. INTRODUCTION
+
+La distribution MOP-1.00 est composee de plusieurs modules Perl5 :
+ - MOP::MOP
+ - MOP::MetaModule
+ - MOP::Remote
+
+Les deux modules MOP::MOP et MOP::MetaModule fournissent les fondations
+d'un protocoles a meta-objets (meta-object protocol ou MOP) pour les objets
+Perl5.
+Un MOP permet d'intercepter les differents appels de methode effectues par
+l'utilisateur sur les objets qu'il a crees a partir d'un module utilisant
+le MOP. Ces appels de methodes sont alors rediriges vers un autre objet,
+appele un meta-objet, effectuant leur mise en oeuvre. Une fois que le
+meta-objet a pris le controle de l'appel de methode, il peut effectuer
+divers traitements complementaires. Les applications possibles de cette
+technique incluent: l'invocation a distance tranparente d'un serveur,
+l'authentification, la gestion de repliques ou le stockage persistant pour
+la tolerance aux fautes, etc.
+
+MOP::MOP permet de specifier quelles methodes d'un objet peuvent etre
+controllees par un meta-objet au travers du MOP. Il est donc utilise pour
+activer le MOP et les methodes reflexives dans le module du niveau de base.
+MOP::MetaModule fournit les fonctionnalites minimales necessaires a un
+meta-objet, et en particulier les moyens d'activer le veritable appel
+de methode au niveau de base depuis le meta-niveau. MOP::MetaModule est
+donc un module patron dont tout les meta-modules peuvent heriter.
+
+La distribution MOP-1.00 contient plusieurs exemples d'application de
+ce MOP. L'exemple le plus interessant est un meta-module (MOP::Remote)
+permettant l'invocation a distance d'objets dans un systeme Unix.
+
+2. DEPENDANCES
+
+MOP::MOP est un filtre de code source. Le module MOP::MOP utilise donc
+le module Filter::Util::Call, egalement disponible sur la CPAN.
+
+3. DEMARRAGE (RAPIDE)
+
+ATTENTION: Si vous voulez executer les tests fournis avec MOP::Remote,
+vous devez specifier le nom d'une deuxieme machine sur laquelle il est
+possible de demarrer un serveur distant! Si vous n'avez qu'une seule
+machine disponible, vous pouvez donner la constante 'localhost' a la place
+du nom de l'hote-distant.
+
+ * LE PREPARER:
+perl Makefile.PL PREFIX=~
+make
+
+ * L'ESSAYER:
+Vous devez positionner une variable d'environnement pour indiquer l'hote
+distant a utiliser (ou pour le simuler sur la machine local 'localhost').
+En fonction de votre shell, executez:
+ setenv REMOTE_HOST hote-distant                  (csh-ish)
+ REMOTE_HOST=hote-distant; export REMOTE_HOST     (sh-ish)
+ export REMOTE_HOST=hote-distant                  (bash-ish)
+make test
+
+ * L'ADOPTER:
+make pure_install
+
+4. LICENSE D'UTILISATION
+
+Copyright (c) 1999 Rodolphe Ortalo & LAAS-CNRS. Tous droits reserves.
+Ce programme est un logiciel libre; il peut etre redistribue et/ou
+modifie suivant les memes conditions que Perl lui-meme.
+
+Au terme de cette license, veuillez notez plus particulierement que ce
+logiciel est fourni "tel-quel" et qu'aucune garantie n'est associee.
+
+5. DISPONIBILITE
+
+Ce module sera prochainement disponible sur l'archive CPAN, probablement
+a l'adresse:
+ http://www.cpan.org/authors/id/O/OR/ORTALO/MOP-1.00.tar.gz
+et depuis la page Web:
+ http://www.laas.fr/~ortalo/
+
+
+Rodolphe Ortalo, 9 Fevrier 1999

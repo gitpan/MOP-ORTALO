@@ -1,0 +1,16 @@
+README
+Changes
+MANIFEST
+Makefile.PL
+MOP/Changes
+MOP/Makefile.PL
+MOP/test.pl
+MOP/MOP.pm
+MOP/MetaModule.pm
+Remote/Changes
+Remote/Makefile.PL
+Remote/Remote.pm
+Remote/t/Truc.pm
+Remote/t/rem.t
+Remote/t/Person.pm
+Remote/t/several.t

@@ -1,0 +1,7 @@
+Revision history for Perl extension MOP.
+
+1.00   Tue Feb 9 14:39:40 MET 1999
+	- original version; created by h2xs 1.18
+        - first packaging of the extension, examples and
+       documentation for distribution via the CPAN.
+       This is a beta release.
